@@ -46,7 +46,7 @@ Fonction R à connaitre
 
 `strsplit(string, regex)`
 
-![image-20211013115459154](image-20211013115459154.png)
+![image-20211013115459154](img/image-20211013115459154.png)
 
 #### String package 
 
@@ -259,7 +259,7 @@ brooke$hello()
 
 #### Devtools
 
-![image-20211013190611761](C:\Users\nlair\AppData\Roaming\Typora\typora-user-images\image-20211013190611761.png)
+![image-20211013190611761](img/image-20211013190611761.png)
 
 ##### Documentation
 
@@ -327,7 +327,7 @@ hello_world <- function(to_print = "Hello world", excited = FALSE){
 
 ##### Testthat
 
-![image-20211014122400179](C:\Users\nlair\AppData\Roaming\Typora\typora-user-images\image-20211014122400179.png)
+![image-20211014122400179](img/image-20211014122400179.png)
 
 ``````R
 library(testthat)
