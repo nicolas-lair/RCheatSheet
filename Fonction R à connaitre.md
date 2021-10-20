@@ -1,6 +1,44 @@
 # Fonction R à connaitre 
 
-[toc]
+[TOC]
+
+- [Fonction R à connaitre](#fonction-r---connaitre)
+      - [Data Structure](#data-structure)
+      - [Boolean](#boolean)
+      - [Sample](#sample)
+      - [Workspace and Files](#workspace-and-files)
+      - [Regular expression](#regular-expression)
+      - [String package](#string-package)
+    + [Tidyverse](#tidyverse)
+      - [Read csv file `readr`](#read-csv-file--readr-)
+      - [Explore data](#explore-data)
+      - [Lubridate](#lubridate)
+      - [Purr](#purr)
+    + [Debugging, profiling, non standard evaluation](#debugging--profiling--non-standard-evaluation)
+      - [Debugging](#debugging)
+      - [Profiling](#profiling)
+      - [Evaluation non standard](#evaluation-non-standard)
+    + [OOP](#oop)
+      - [S3](#s3)
+        * [Class and object definition](#class-and-object-definition)
+        * [Method definition](#method-definition)
+      - [S4](#s4)
+        * [Class definition](#class-definition)
+        * [Object definition](#object-definition)
+        * [Method definition](#method-definition-1)
+      - [Reference Classes](#reference-classes)
+        * [Class definition](#class-definition-1)
+        * [Object definition](#object-definition-1)
+    + [Packages](#packages)
+      - [Dependances](#dependances)
+      - [Devtools](#devtools)
+        * [Documentation](#documentation)
+        * [Include data in a package](#include-data-in-a-package)
+        * [Testthat](#testthat)
+        * [Save data on a user machine](#save-data-on-a-user-machine)
+        * [Environmental attributes](#environmental-attributes)
+      - [Renv](#renv)
+    + [Requesting Data from API](#requesting-data-from-api)
 
 #### Data Structure
 
