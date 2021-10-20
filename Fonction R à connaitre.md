@@ -46,7 +46,7 @@ Fonction R à connaitre
 
 `strsplit(string, regex)`
 
-![image-20211013115459154](C:\Users\nlair\AppData\Roaming\Typora\typora-user-images\image-20211013115459154.png)
+![image-20211013115459154](image-20211013115459154.png)
 
 #### String package 
 
