@@ -1,4 +1,6 @@
-Fonction R à connaitre 
+# Fonction R à connaitre 
+
+[toc]
 
 #### Data Structure
 
