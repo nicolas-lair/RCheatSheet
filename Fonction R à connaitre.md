@@ -373,3 +373,37 @@ save_file_with_authorization <- function(force = FALSE){
 ##### Environmental attributes
 
 See `.Machine` and `.Platform` attributes
+
+#### Renv
+
+`renv::init()`
+
+`renv::snapshot()`
+
+`renv::restore()`
+
+### Requesting Data from API
+
+[httr docs](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
+
+``````R
+# load packages
+library(dplyr)
+library(rjson)
+library(jsonlite)
+library(httr)
+
+base_url <- "https://data.colorado.gov/resource/j5pc-4t32.json?"
+full_url <- paste0(base_url, "station_status=Active",
+            "&county=BOULDER")
+r <- GET(full_url)
+response_content <- content(r, "text")
+# you can then pipe this
+water_data_df <- fromJSON(response_content) %>%
+  flatten(recursive = TRUE) # remove the nested data frame
+``````
+
+
+
+
+
