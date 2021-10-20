@@ -1,44 +1,51 @@
 # Fonction R à connaitre 
 
-[TOC]
+* [RCheatSheets : [link](https://www.rstudio.com/resources/cheatsheets/)](#rcheatsheets----link--https---wwwrstudiocom-resources-cheatsheets--)
+* [General](#general)
+    - [Data Structure](#data-structure)
+    - [Boolean](#boolean)
+    - [Sample](#sample)
+    - [Workspace and Files](#workspace-and-files)
+    - [Regular expression](#regular-expression)
+    - [String package](#string-package)
+* [Tidyverse](#tidyverse)
+    - [Read csv file `readr`](#read-csv-file--readr-)
+    - [Explore data](#explore-data)
+    - [Lubridate](#lubridate)
+    - [Purr](#purr)
+* [Debugging, profiling, non standard evaluation](#debugging--profiling--non-standard-evaluation)
+    - [Debugging](#debugging)
+    - [Profiling](#profiling)
+    - [Evaluation non standard](#evaluation-non-standard)
+* [OOP](#oop)
+    - [S3](#s3)
+      * [Class and object definition](#class-and-object-definition)
+      * [Method definition](#method-definition)
+    - [S4](#s4)
+      * [Class definition](#class-definition)
+      * [Object definition](#object-definition)
+      * [Method definition](#method-definition-1)
+    - [Reference Classes](#reference-classes)
+      * [Class definition](#class-definition-1)
+      * [Object definition](#object-definition-1)
+* [Packages](#packages)
+    - [Dependances](#dependances)
+    - [Devtools](#devtools)
+      * [Documentation](#documentation)
+      * [Include data in a package](#include-data-in-a-package)
+      * [Testthat](#testthat)
+      * [Save data on a user machine](#save-data-on-a-user-machine)
+      * [Environmental attributes](#environmental-attributes)
+* [Renv](#renv)
+* [Requesting Data from API](#requesting-data-from-api)
+* [Code Parallelization](#code-parallelization)
+  + [`Parallel`, `foreach`, `doParallel` package](#-parallel----foreach----doparallel--package)
+  + [Future](#future)
+* [Leaflet](#leaflet)
 
-- [Fonction R à connaitre](#fonction-r---connaitre)
-      - [Data Structure](#data-structure)
-      - [Boolean](#boolean)
-      - [Sample](#sample)
-      - [Workspace and Files](#workspace-and-files)
-      - [Regular expression](#regular-expression)
-      - [String package](#string-package)
-    + [Tidyverse](#tidyverse)
-      - [Read csv file `readr`](#read-csv-file--readr-)
-      - [Explore data](#explore-data)
-      - [Lubridate](#lubridate)
-      - [Purr](#purr)
-    + [Debugging, profiling, non standard evaluation](#debugging--profiling--non-standard-evaluation)
-      - [Debugging](#debugging)
-      - [Profiling](#profiling)
-      - [Evaluation non standard](#evaluation-non-standard)
-    + [OOP](#oop)
-      - [S3](#s3)
-        * [Class and object definition](#class-and-object-definition)
-        * [Method definition](#method-definition)
-      - [S4](#s4)
-        * [Class definition](#class-definition)
-        * [Object definition](#object-definition)
-        * [Method definition](#method-definition-1)
-      - [Reference Classes](#reference-classes)
-        * [Class definition](#class-definition-1)
-        * [Object definition](#object-definition-1)
-    + [Packages](#packages)
-      - [Dependances](#dependances)
-      - [Devtools](#devtools)
-        * [Documentation](#documentation)
-        * [Include data in a package](#include-data-in-a-package)
-        * [Testthat](#testthat)
-        * [Save data on a user machine](#save-data-on-a-user-machine)
-        * [Environmental attributes](#environmental-attributes)
-      - [Renv](#renv)
-    + [Requesting Data from API](#requesting-data-from-api)
+## RCheatSheets : [link](https://www.rstudio.com/resources/cheatsheets/)
+
+## General
 
 #### Data Structure
 
@@ -96,7 +103,7 @@ functions argument are usually `(string, regex)`
 
 `word(string, i)` -> get i_th_ word in string 
 
-### Tidyverse
+## Tidyverse
 
 #### Read csv file `readr`
 
@@ -140,7 +147,7 @@ functions argument are usually `(string, regex)`
 
 `walk` : apply a function sequentially on element of structure
 
-### Debugging, profiling, non standard evaluation
+## Debugging, profiling, non standard evaluation
 
 #### Debugging
 
@@ -160,7 +167,7 @@ Voir package `microbenchmark` et `profvis`
 
 Lié à l'environnement tidyverse
 
-### OOP
+## OOP
 
 #### S3
 
@@ -291,11 +298,11 @@ brooke$credits
 brooke$hello()
 ```
 
-### Packages
+## Packages
 
 #### Dependances
 
-`require` : load a pckage and retur a boolean indicatinf if success
+`require` : load a pckage and retur a boolean indicating if success
 
 #### Devtools
 
@@ -414,7 +421,7 @@ save_file_with_authorization <- function(force = FALSE){
 
 See `.Machine` and `.Platform` attributes
 
-#### Renv
+## Renv
 
 `renv::init()`
 
@@ -422,7 +429,7 @@ See `.Machine` and `.Platform` attributes
 
 `renv::restore()`
 
-### Requesting Data from API
+## Requesting Data from API
 
 [httr docs](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html)
 
@@ -443,7 +450,42 @@ water_data_df <- fromJSON(response_content) %>%
   flatten(recursive = TRUE) # remove the nested data frame
 ``````
 
+## Code Parallelization 
 
+### `Parallel`, `foreach`, `doParallel` package
 
+[Tutorial](https://nceas.github.io/oss-lessons/parallel-computing-in-r/parallel-computing-in-r.html)
 
+``````R
+library(parallel)
+numCores <- detectCores()*
+vec <- c(...)
+func <- function(x){...}
+results <- mclapply(vec, fx, mc.cores = numCores)
+``````
+
+``````R
+library(foreach)
+library(doParallel)
+registerDoParallel(numCores)
+foreach (i=1:3) %dopar% {
+  sqrt(i)
+}
+
+# Return a vector
+foreach (i=1:3, .combine=c) %dopar% {
+  sqrt(i)
+}
+
+# When you're done, clean up the cluster
+stopImplicitCluster()
+``````
+
+### Future
+
+See [Link](https://cran.r-project.org/web/packages/future/vignettes/future-1-overview.html)
+
+## Leaflet
+
+https://rstudio.github.io/leaflet/json.html
 
